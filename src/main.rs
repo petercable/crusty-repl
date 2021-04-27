@@ -4,7 +4,7 @@ use std::io::prelude::*;
 use crate::enums::{Command, HandleResult};
 use crate::parser::CommandParser;
 use crate::store::Store;
-use crate::copy_store::CopyStore;
+use crate::skweel_store::SkweelStore;
 
 mod enums;
 mod parser;
@@ -12,10 +12,11 @@ mod store;
 mod simple_store;
 mod dummy_store;
 mod copy_store;
+mod skweel_store;
 
 fn main() -> Result<(), io::Error> {
     let parser = CommandParser::new();
-    let mut store = CopyStore::new();
+    let mut store = SkweelStore::new().unwrap();
 
     println!("CRUSTY KEY/VALUE STORE");
     prompt()?;
